@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaTech College</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#0f172a;
+  color:white;
+  scroll-behavior:smooth;
+}
+
+/* NAVBAR */
+nav{
+  position:sticky;
+  top:0;
+  background:rgba(0,0,0,0.7);
+  backdrop-filter: blur(10px);
+  display:flex;
+  justify-content:space-between;
+  padding:15px 50px;
+  z-index:1000;
+}
+
+nav h2{
+  color:#38bdf8;
+}
+
+nav a{
+  color:white;
+  margin-left:20px;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+nav a:hover{
+  color:#38bdf8;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+  url('https://picsum.photos/1600/900');
+  background-size:cover;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.hero h1{
+  font-size:50px;
+}
+
+.hero p{
+  margin:20px;
+}
+
+.btn{
+  padding:12px 25px;
+  margin:10px;
+  border:none;
+  cursor:pointer;
+  border-radius:5px;
+  background:#38bdf8;
+  color:black;
+  transition:0.3s;
+}
+
+.btn:hover{
+  background:#0ea5e9;
+}
+
+/* SECTION */
+section{
+  padding:80px 50px;
+}
+
+/* STATS */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:#1e293b;
+  padding:30px;
+  text-align:center;
+  border-radius:10px;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:scale(1.05);
+}
+
+/* COURSES */
+.filter-btns{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.filter-btns button{
+  margin:5px;
+  padding:10px;
+  border:none;
+  cursor:pointer;
+}
+
+.course-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+/* TABLE */
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th,td{
+  padding:10px;
+  text-align:center;
+}
+
+tr:nth-child(even){
+  background:#1e293b;
+}
+
+th{
+  cursor:pointer;
+  background:#38bdf8;
+  color:black;
+}
+
+/* FACILITIES */
+.facilities{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+}
+
+/* GALLERY */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:10px;
+}
+
+.gallery img{
+  width:100%;
+  cursor:pointer;
+}
+
+/* LIGHTBOX */
+#lightbox{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.8);
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
+
+#lightbox img{
+  max-width:80%;
+}
+
+/* CONTACT */
+.contact{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+input,textarea{
+  width:100%;
+  padding:10px;
+  margin:5px 0;
+}
+#particles{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+}
+.card{
+  box-shadow:0 0 0 transparent;
+}
+
+.card:hover{
+  transform:translateY(-10px) scale(1.05);
+  box-shadow:0 0 20px #38bdf8;
+}
+
+.btn{
+  box-shadow:0 0 10px #38bdf8;
+}
+
+.btn:hover{
+  box-shadow:0 0 25px #0ea5e9;
+}
+#cursor{
+  position:fixed;
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  background:#38bdf8;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  z-index:9999;
+  box-shadow:0 0 20px #38bdf8;
+}
+.reveal{
+  opacity:0;
+  transform:translateY(50px);
+  transition:all 0.6s ease;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+/* LIGHT MODE */
+body.light{
+  background:#f1f5f9;
+  color:#0f172a;
+}
+
+body.light nav{
+  background:rgba(255,255,255,0.7);
+}
+
+body.light .card{
+  background:white;
+  color:black;
+}
+
+body.light table tr:nth-child(even){
+  background:#e2e8f0;
+}
+
+body.light th{
+  background:#0ea5e9;
+  color:white;
+}
+
+body.light .btn{
+  background:#0ea5e9;
+  color:white;
+}
+/* COURSE GRID */
+.course-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+/* MODAL */
+.modal{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.8);
+  justify-content:center;
+  align-items:center;
+}
+
+.modal-content{
+  background:#1e293b;
+  padding:20px;
+  border-radius:10px;
+  width:400px;
+  text-align:center;
+}
+
+.modal-content img{
+  width:100%;
+  border-radius:10px;
+}
+
+.close{
+  float:right;
+  cursor:pointer;
+  font-size:25px;
+}
+#admissionTable{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:20px;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+#admissionTable th,
+#admissionTable td{
+  padding:15px;
+  text-align:center;
+}
+
+#admissionTable th{
+  background:#38bdf8;
+  color:black;
+  font-weight:600;
+}
+
+#admissionTable tr{
+  transition:0.3s;
+}
+
+#admissionTable tr:nth-child(even){
+  background:#1e293b;
+}
+
+#admissionTable tr:hover{
+  background:#334155;
+  transform:scale(1.01);
+}
+.section-title{
+  text-align:center;
+  font-size:36px;
+}
+
+.section-sub{
+  text-align:center;
+  margin-bottom:40px;
+  color:#94a3b8;
+}
+
+/* GRID */
+.achievements-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:20px;
+}
+
+/* CARD */
+.ach-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:15px;
+  cursor:pointer;
+}
+
+.ach-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:0.4s;
+}
+
+/* OVERLAY */
+.overlay{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  padding:20px;
+  background:linear-gradient(transparent, rgba(0,0,0,0.9));
+}
+
+.overlay h3{
+  margin-bottom:5px;
+}
+
+/* HOVER EFFECT */
+.ach-card:hover img{
+  transform:scale(1.1);
+}
+
+.ach-card:hover{
+  box-shadow:0 0 25px #38bdf8;
+}.stats-bar{
+  margin-top:40px;
+  display:flex;
+  justify-content:space-around;
+  padding:20px;
+  background:#0f172a;
+  border-radius:15px;
+  text-align:center;
+}
+
+.stats-bar div h2{
+  color:#38bdf8;
+}
+/* HERO SECTION */
+.hero{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  padding:0 80px;
+  background:
+    linear-gradient(to right, rgba(2,6,23,0.95), rgba(2,6,23,0.6)),
+    url('https://picsum.photos/1600/900?campus');
+  background-size:cover;
+  background-position:center;
+}
+
+/* CONTENT */
+.hero-content{
+  max-width:600px;
+  position:relative;
+}
+
+/* TAG */
+.tag{
+  color:#38bdf8;
+  margin-bottom:15px;
+  font-weight:500;
+}
+
+/* HEADING */
+.hero h1{
+  font-size:60px;
+  line-height:1.2;
+}
+
+.hero h1 span{
+  color:#38bdf8;
+}
+
+/* DESC */
+.hero-desc{
+  margin:20px 0;
+  color:#cbd5f5;
+  line-height:1.6;
+}
+
+/* BUTTONS */
+.hero-buttons{
+  margin-top:20px;
+}
+
+.btn{
+  padding:12px 25px;
+  background:#2563eb;
+  color:white;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  margin-right:10px;
+  transition:0.3s;
+}
+
+.btn:hover{
+  background:#1d4ed8;
+}
+
+/* OUTLINE BUTTON */
+.btn-outline{
+  padding:12px 25px;
+  border:1px solid #38bdf8;
+  background:transparent;
+  color:#38bdf8;
+  border-radius:6px;
+  cursor:pointer;
+}
+.hero-stats{
+  position:absolute;
+  bottom:30px;
+  left:50%;
+  transform:translateX(-50%);
+  width:85%;
+  display:flex;
+  justify-content:space-around;
+  padding:20px;
+  background:rgba(15,23,42,0.8);
+  border-radius:15px;
+  backdrop-filter:blur(10px);
+}
+
+.hero-stats div{
+  text-align:center;
+}
+
+.hero-stats h2{
+  color:#38bdf8;
+}
+
+/* CONTAINER */
+.contact-container{
+  display:grid;
+  grid-template-columns:1fr 1.5fr;
+  gap:40px;
+  margin-top:40px;
+}
+
+/* LEFT SIDE */
+.contact-info{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.info-box{
+  background:#1e293b;
+  padding:20px;
+  border-radius:10px;
+  transition:0.3s;
+}
+
+.info-box:hover{
+  box-shadow:0 0 15px #38bdf8;
+}
+
+/* FORM */
+.contact-form form{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+.row{
+  display:flex;
+  gap:15px;
+}
+
+.row input{
+  flex:1;
+}
+
+/* INPUTS */
+input, textarea{
+  padding:12px;
+  border:none;
+  border-radius:6px;
+  outline:none;
+}
+
+textarea{
+  height:120px;
+  resize:none;
+}
+input:focus, textarea:focus{
+  box-shadow:0 0 10px #38bdf8;
+}
+/* FILTER BUTTONS */
+.filter-btns{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.filter-btns button{
+  padding:10px 18px;
+  margin:5px;
+  border:none;
+  border-radius:25px;
+  cursor:pointer;
+  background:#1e293b;
+  color:white;
+  transition:0.3s;
+}
+
+/* ACTIVE BUTTON */
+.filter-btns button.active{
+  background:#38bdf8;
+  color:black;
+}
+
+/* HOVER */
+.filter-btns button:hover{
+  background:#0ea5e9;
+}
+</style>
+</head>
+
+<body>
+    <canvas id="particles"></canvas>
+    <div id="cursor"></div>
+    <section class="reveal"></section>
+
+<nav>
+  <h2>NovaTech</h2>
+  <div>
+    <a href="#home">Home</a>
+    <a href="#courses">Courses</a>
+    <a href="#admission">Admissions</a>
+    <a href="#contact">Contact</a>
+    <button id="themeToggle" class="btn">🌙</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+
+  <div class="hero-content">
+    
+    <p class="tag">🏆 Established in 2005</p>
+
+    <h1>
+      Shaping Futures,<br>
+      <span>Inspiring Excellence</span>
+    </h1>
+
+    <p class="hero-desc">
+      Empowering students with quality education, innovation 
+      and real-world exposure to become tomorrow’s leaders.
+    </p>
+
+    <div class="hero-buttons">
+      <button class="btn" onclick="scrollToSection('courses')">
+        Explore Courses →
+      </button>
+
+      <button class="btn-outline">
+        ▶ Take a Campus Tour
+      </button>
+      
+    </div>
+
+  </div>
+  
+</div>
+
+</section>
+
+<section id="achievements" class="reveal">
+
+<h2 class="section-title">Our Achievements</h2>
+<p class="section-sub">Milestones that define our excellence</p>
+
+<div class="achievements-grid">
+
+  <div class="ach-card">
+    <img src="our achievement.jpg">
+    <div class="overlay">
+      <h3>Best College Award 2024</h3>
+      <p>Recognized for academic excellence</p>
+    </div>
+  </div>
+
+  <div class="ach-card">
+    <img src="national.jpg">
+    <div class="overlay">
+      <h3>National Champions</h3>
+      <p>Won national level competition</p>
+    </div>
+  </div>
+
+  <div class="ach-card">
+    <img src="graduates.jpg">
+    <div class="overlay">
+      <h3>1000+ Graduates</h3>
+      <p>Successful alumni worldwide</p>
+    </div>
+  </div>
+
+  <div class="ach-card">
+    <img src="published.jpg">
+    <div class="overlay">
+      <h3>200+ Research Papers</h3>
+      <p>Published in top journals</p>
+    </div>
+  </div>
+
+  <div class="ach-card">
+    <img src="sports.jpg">
+    <div class="overlay">
+      <h3>Sports Excellence</h3>
+      <p>Multiple championships won</p>
+    </div>
+  </div>
+
+  <div class="ach-card">
+    <img src="campus.jpg">
+    <div class="overlay">
+      <h3>World-Class Campus</h3>
+      <p>Modern infrastructure & labs</p>
+    </div>
+  </div>
+
+</div>
+
+</section><div class="stats-bar">
+
+  <div>
+    ⭐ <h2>25+</h2>
+    <p>Awards</p>
+  </div>
+
+  <div>
+    👨‍🎓 <h2>5000+</h2>
+    <p>Students</p>
+  </div>
+
+  <div>
+    📚 <h2>15+</h2>
+    <p>Years</p>
+  </div>
+
+  <div>
+    🤝 <h2>150+</h2>
+    <p>Partners</p>
+  </div>
+
+  <div>
+    ❤️ <h2>100%</h2>
+    <p>Success</p>
+  </div>
+
+</div>
+</section>
+
+<!-- COURSES -->
+<section id="courses" class="reveal">
+<h2>Our Courses</h2>
+
+<div class="filter-btns">
+  <button class="active" onclick="filterCourse('all', this)">All</button>
+  <button onclick="filterCourse('eng', this)">Engineering</button>
+  <button onclick="filterCourse('arts', this)">Arts</button>
+  <button onclick="filterCourse('com', this)">Commerce</button>
+</div>
+
+<div class="course-container">
+
+  <div class="card course" data-cat="eng" onclick="openCourse(this)">
+    <h3>AI & Data Science</h3>
+  </div>
+
+  <div class="card course" data-cat="eng" onclick="openCourse(this)">
+    <h3>Computer Science</h3>
+  </div>
+
+  <div class="card course" data-cat="eng" onclick="openCourse(this)">
+    <h3>Mechanical Engg</h3>
+  </div>
+
+  <div class="card course" data-cat="arts" onclick="openCourse(this)">
+    <h3>Psychology</h3>
+  </div>
+
+  <div class="card course" data-cat="arts" onclick="openCourse(this)">
+    <h3>English Literature</h3>
+  </div>
+
+  <div class="card course" data-cat="com" onclick="openCourse(this)">
+    <h3>B.Com</h3>
+  </div>
+
+</div>
+</section>
+
+<!-- TABLE -->
+ <section id="admission" class="reveal"></section>
+
+<table id="admissionTable">
+  <thead>
+    <tr>
+      <th onclick="sortTable(0)">Course</th>
+      <th onclick="sortTable(1)">Department</th>
+      <th onclick="sortTable(2)">Duration</th>
+      <th onclick="sortTable(3)">Fees (₹)</th>
+      <th onclick="sortTable(4)">Seats</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+<button class="btn" onclick="alert('Application Form Coming Soon')">
+  Apply Now
+</button>
+
+<!-- GALLERY -->
+<section>
+<h2>Gallery</h2>
+<div class="gallery">
+  <img src="campus.jpg" onclick="openLight(this)">
+  <img src="balcony.jpg" onclick="openLight(this)">
+  <img src="window.jpg" onclick="openLight(this)">
+</div>
+</section>
+
+<div id="lightbox" onclick="closeLight()">
+  <img id="lightimg">
+</div>
+
+<!-- CONTACT -->
+<section id="contact" class="reveal">
+
+<h2 class="section-title">Contact Us</h2>
+<p class="section-sub">We’d love to hear from you</p>
+
+<div class="contact-container">
+
+  <!-- LEFT SIDE -->
+  <div class="contact-info">
+
+    <div class="info-box">
+      <h3>📍 Address</h3>
+      <p>NovaTech College, Madurai, Tamil Nadu</p>
+    </div>
+
+    <div class="info-box">
+      <h3>📞 Phone</h3>
+      <p>+91 9876543210</p>
+    </div>
+
+    <div class="info-box">
+      <h3>📧 Email</h3>
+      <p>info@novatech.com</p>
+    </div>
+
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div class="contact-form">
+
+    <form onsubmit="return validateForm()">
+
+      <div class="row">
+        <input type="text" id="name" placeholder="Your Name">
+        <input type="email" id="email" placeholder="Your Email">
+      </div>
+
+      <input type="text" id="subject" placeholder="Subject">
+
+      <textarea id="message" placeholder="Message"></textarea>
+
+      <button class="btn">Send Message</button>
+      
+    </form>
+<iframe 
+  src="https://maps.google.com/maps?q=madurai&t=&z=13&ie=UTF8&iwloc=&output=embed"
+  width="100%" height="200" style="border-radius:10px; margin-top:15px;">
+</iframe>
+
+  </div>
+
+</div>
+
+</section>
+
+<script>
+
+/* SCROLL */
+function scrollToSection(id){
+  document.getElementById(id).scrollIntoView();
+}
+
+/* COUNTER */
+let counters=document.querySelectorAll('.counter');
+counters.forEach(counter=>{
+  let update=()=>{
+    let target=+counter.getAttribute('data-target');
+    let count=+counter.innerText;
+    let inc=target/100;
+    if(count<target){
+      counter.innerText=Math.ceil(count+inc);
+      setTimeout(update,20);
+    }
+  }
+  update();
+});
+
+/* FILTER */
+function filter(cat){
+  let courses=document.querySelectorAll('.course');
+  courses.forEach(c=>{
+    c.style.display=(cat=='all'||c.dataset.cat==cat)?'block':'none';
+  });
+}
+
+/* SORT */
+function sortTable(n){
+  let table = document.getElementById("admissionTable");
+  let rows = Array.from(table.rows).slice(1);
+
+  let asc = table.classList.toggle("asc");
+
+  rows.sort((a,b)=>{
+    let x = a.cells[n].innerText;
+    let y = b.cells[n].innerText;
+
+    return asc ? x.localeCompare(y,undefined,{numeric:true}) 
+               : y.localeCompare(x,undefined,{numeric:true});
+  });
+
+  rows.forEach(r=>table.appendChild(r));
+}
+/* LIGHTBOX */
+function openLight(img){
+  document.getElementById('lightbox').style.display='flex';
+  document.getElementById('lightimg').src=img.src;
+}
+function closeLight(){
+  document.getElementById('lightbox').style.display='none';
+}
+
+/* VALIDATION */
+function validate(){
+  if(!name.value || !email.value || !msg.value){
+    alert("Fill all fields");
+    return false;
+  }
+  alert("Message Sent!");
+  return true;
+}
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particlesArray = [];
+
+class Particle {
+  constructor(){
+    this.x = Math.random()*canvas.width;
+    this.y = Math.random()*canvas.height;
+    this.size = Math.random()*3;
+    this.speedX = Math.random()*1 - 0.5;
+    this.speedY = Math.random()*1 - 0.5;
+  }
+  update(){
+    this.x += this.speedX;
+    this.y += this.speedY;
+  }
+  draw(){
+    ctx.fillStyle = "#38bdf8";
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+    ctx.fill();
+  }
+}
+
+function initParticles(){
+  for(let i=0;i<100;i++){
+    particlesArray.push(new Particle());
+  }
+}
+
+function animateParticles(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particlesArray.forEach(p=>{
+    p.update();
+    p.draw();
+  });
+  requestAnimationFrame(animateParticles);
+}
+
+initParticles();
+animateParticles();
+const cursor = document.getElementById("cursor");
+
+document.addEventListener("mousemove",(e)=>{
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+});
+const reveals = document.querySelectorAll(".reveal");
+
+window.addEventListener("scroll",()=>{
+  reveals.forEach(r=>{
+    let top = r.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      r.classList.add("active");
+    }
+  });
+});
+const toggle = document.getElementById("themeToggle");
+
+// Load saved mode
+if(localStorage.getItem("theme") === "light"){
+  document.body.classList.add("light");
+  toggle.innerText = "☀️";
+}
+
+toggle.addEventListener("click",()=>{
+  document.body.classList.toggle("light");
+
+  if(document.body.classList.contains("light")){
+    localStorage.setItem("theme","light");
+    toggle.innerText = "☀️";
+  } else {
+    localStorage.setItem("theme","dark");
+    toggle.innerText = "🌙";
+  }
+});
+
+// FILTER
+function filterCourse(cat){
+  let courses=document.querySelectorAll('.course');
+  courses.forEach(c=>{
+    c.style.display = (cat==='all'||c.dataset.cat===cat)?'block':'none';
+  });
+}
+
+// COURSE DATA
+const courseData = {
+  "AI & Data Science":{
+    img:"AIandDS.jpg",
+    desc:"Learn Machine Learning, AI, Big Data and Analytics."},
+  "Computer Science":{
+    img:"cse.jpg",
+    desc:"Programming, Data Structures, Software Development."
+  },
+  "Mechanical Engg":{
+    img:"mechanical.jpg",
+    desc:"Design, Thermodynamics and Manufacturing."
+  },
+  "Psychology":{
+    img:"pschology.jpg",
+    desc:"Human behavior, mental health and research."
+  },
+  "English Literature":{
+    img:"english.jpg",
+    desc:"Study literature, poetry and communication."
+  },
+  "B.Com":{
+    img:"bcom (2).jpg",
+    desc:"Finance, Accounting and Business studies."
+  }
+};
+
+// OPEN COURSE
+function openCourse(el){
+  let title = el.innerText.trim();
+
+  document.getElementById("courseTitle").innerText = title;
+  document.getElementById("courseDesc").innerText = courseData[title].desc;
+  document.getElementById("courseImg").src = courseData[title].img;
+
+  document.getElementById("courseModal").style.display="flex";
+}
+
+// CLOSE
+function closeCourse(){
+  document.getElementById("courseModal").style.display="none";
+}
+const admissionData = [
+  {course:"AI & Data Science", dept:"Engineering", duration:"4 Years", fee:100000, seats:60},
+  {course:"Computer Science", dept:"Engineering", duration:"4 Years", fee:90000, seats:60},
+  {course:"Mechanical Engg", dept:"Engineering", duration:"4 Years", fee:80000, seats:50},
+  {course:"Psychology", dept:"Arts", duration:"3 Years", fee:60000, seats:40},
+  {course:"English Literature", dept:"Arts", duration:"3 Years", fee:55000, seats:40},
+  {course:"B.Com", dept:"Commerce", duration:"3 Years", fee:50000, seats:50}
+];
+function loadTable(){
+  let tbody = document.querySelector("#admissionTable tbody");
+  tbody.innerHTML = "";
+
+  admissionData.forEach(c=>{
+    let row = `
+      <tr>
+        <td>${c.course}</td>
+        <td>${c.dept}</td>
+        <td>${c.duration}</td>
+        <td>${c.fee}</td>
+        <td>${c.seats}</td>
+      </tr>
+    `;
+    tbody.innerHTML += row;
+  });
+}
+
+loadTable();
+function validateForm(){
+  let name = document.getElementById("name").value;
+  let email = document.getElementById("email").value;
+  let message = document.getElementById("message").value;
+
+  if(name === "" || email === "" || message === ""){
+    alert("Please fill all fields");
+    return false;
+  }
+
+  alert("Message sent successfully!");
+  return true;
+}
+function filterCourse(cat, btn){
+  let courses = document.querySelectorAll('.course');
+
+  courses.forEach(c=>{
+    if(cat === 'all' || c.dataset.cat === cat){
+      c.style.display = "block";
+    } else {
+      c.style.display = "none";
+    }
+  });
+
+  // REMOVE ACTIVE FROM ALL
+  document.querySelectorAll('.filter-btns button')
+    .forEach(b => b.classList.remove('active'));
+
+  // ADD ACTIVE TO CLICKED
+  btn.classList.add('active');
+}
+</script>
+<div id="courseModal" class="modal">
+  <div class="modal-content">
+    <span onclick="closeCourse()" class="close">&times;</span>
+    <img id="courseImg">
+    <h2 id="courseTitle"></h2>
+    <p id="courseDesc"></p>
+  </div>
+</div>
+</body>
+</html>
